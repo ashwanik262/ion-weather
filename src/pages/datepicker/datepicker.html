@@ -1,0 +1,182 @@
+<!--
+  Generated template for the DatepickerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>datepicker</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="datePicker">
+	<ion-row (click)="selectDate()">
+		<ion-col>
+			<img style="width:20%" src="assets/icon/calendar.svg" alt="">
+		</ion-col>
+	</ion-row>
+	
+	<button ion-button color="danger" (click)="selectDate()" round>Select date</button>
+
+	<ion-row>
+
+		<ion-col>
+			<h4><marquee>{{locationDetails.subThoroughfare}} {{locationDetails.thoroughfare}} {{locationDetails.subLocality}} , {{locationDetails.locality}} {{locationDetails.postalCode}} , {{locationDetails.administrativeArea}} , {{locationDetails.countryName}}</marquee></h4>
+		</ion-col>
+	</ion-row>
+	<!-- <ion-grid style="background-image: url('assets/imgs/rain.jpg');" *ngIf="weather"> -->
+		<ion-grid *ngIf="weather">
+
+			<ion-row>
+				<ion-col wiidth-50 offset-25 col-4>
+					<p style="text-align: center;"><strong>{{weather.time|utcTime|date:'EEEE, MMMM d'}}</strong></p>
+					<h3 style="text-align: center;"><strong>{{weather.time|utcTime|date: 'shortTime'}}</strong></h3>
+				</ion-col>
+				<ion-col col-8>
+					<ion-row>
+						<ion-col>
+							<h3 class="temp" *ngIf="!isCel" (click)="convert()">{{temperature}}&deg;C</h3>
+							<h3 class="temp" *ngIf="isCel" (click)="convert()">{{weather.temperature}}&deg;F</h3>
+						</ion-col>
+					</ion-row>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col style="text-align: center;">
+					<div class="icon"><img width="50%" src="assets/imgs/png/{{weather.icon}}.png" alt=""></div>
+					<h3 class="desc">{{weather.summary}}</h3>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+
+		<ion-grid *ngIf="weather">
+			<ion-row>
+				<ion-col col-6>
+					<p style="text-align: center;"><strong>{{weather.time|utcTime|date:'EEEE, MMMM d'}}</strong></p>
+					<h3 style="text-align: center;"><strong>{{weather.time|utcTime|date: 'shortTime'}}</strong></h3>
+				</ion-col>
+				<ion-col col-6>
+					<h3 class="temp" *ngIf="!isCel" (click)="convert()">{{temperature}}&deg;C</h3>
+					<h3 class="temp" *ngIf="isCel" (click)="convert()">{{weather.temperature}}&deg;F</h3>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col style="text-align: center;" col-6>
+					<div class="icon"><img width="50%" src="assets/imgs/png/{{weather.icon}}.png" alt=""></div>
+					<h3 class="desc">{{weather.summary}}</h3>
+				</ion-col>
+				<ion-col col-6>
+					{{today.sunriseTime|utcTime|date: 'shortTime'}}
+					{{today.sunsetTime|utcTime|date: 'shortTime'}}
+
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid *ngIf="weather">
+			<ion-row>
+				<ion-card style="background:rgba(255, 255, 255, 0.18);border-radius: 5px;text-align: center;">
+					<ion-grid>
+						<ion-row>
+							<ion-col col-4 style="border-right: 2px solid;">
+								<img  style="width: 60%" src="assets/icon/wind-turbines.svg" alt="">
+							</ion-col>
+							<ion-col col-8>
+								<strong> WindSpeed : </strong>{{weather.windSpeed}} MPH <br>
+								<strong> WindBearing : </strong>{{weather.windBearing | d2d}} 
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</ion-card>
+			</ion-row>
+
+			<ion-row>
+				<ion-card style="background:rgba(255, 255, 255, 0.18);border-radius: 5px;text-align: center;">
+					<ion-grid>
+						<ion-row>
+							<ion-col col-6 style="border-right: 2px solid;">
+								<strong>Humidity</strong><br>
+								<div style=" padding: 15px 0;text-align: center;">
+									<img style="width: 30%;display: block;margin-left: auto;margin-right: auto;" src="assets/icon/drop.svg" alt="">
+								</div>
+								{{weather.humidity*100}} %
+							</ion-col>
+							<ion-col col-6>
+								<strong>Pressure</strong><br>
+								<div style=" padding: 15px 0;text-align: center;">
+									<img style="width: 30%;display: block;margin-left: auto;margin-right: auto;" src="assets/icon/pressure.svg" alt="">
+								</div>
+
+								{{weather.pressure}} hPa
+
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</ion-card>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-grid>
+					<ion-row>
+						<ion-col col-4>
+							<ion-card style="background:rgba(255, 255, 255, 0.18);border-radius: 5px;text-align: center;padding:10px">
+								<strong>DewPoint</strong><br>
+								<div style=" padding: 15px 0;text-align: center;">
+									<img style="width: 60%;display: block;margin-left: auto;margin-right: auto;" src="assets/icon/dew.svg" alt="">
+								</div>
+								{{weather.dewPoint}}&deg;
+							</ion-card>
+
+						</ion-col>
+						<ion-col col-4>
+							<ion-card style="background:rgba(255, 255, 255, 0.18);border-radius: 5px;text-align: center;padding:10px">
+								<strong>UV Index</strong><br>
+								<div style=" padding: 15px 0;text-align: center;">
+									<img style="width: 60%;display: block;margin-left: auto;margin-right: auto;" src="assets/icon/uv.svg" alt="">
+								</div>
+								{{weather.uvIndex}}
+							</ion-card>
+						</ion-col>
+						<ion-col col-4>
+							<ion-card style="background:rgba(255, 255, 255, 0.18);border-radius: 5px;text-align: center;padding:10px">
+								<strong>Visibility</strong><br>
+								<div style=" padding: 15px 0;text-align: center;">
+									<img style="width: 60%;display: block;margin-left: auto;margin-right: auto;" src="assets/icon/view.svg" alt="">
+								</div>
+								{{weather.visibility}} KM
+							</ion-card>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-row>
+		</ion-grid>
+
+
+
+
+
+		<div (click)="hourlyWeatherData()">
+			<ion-row  style="height: 100%;text-align:center;border-bottom: 1px solid">
+				<h3>HOURLY</h3>
+			</ion-row>
+			<ion-scroll scrollX>
+				<ion-col  class="scroll-item" *ngFor="let item of hourlyWeather" col-4>
+					<ion-card style="background:rgba(255, 255, 255, 0.18);border-radius: 5px;text-align: center;padding:10px">
+						<strong>{{item.time | utcTime | date:'shortTime'}}</strong><br>
+						<strong>{{item.time | utcTime | date:'EEEE'}}</strong><br>
+						<div style=" padding: 15px 0;text-align: center;">
+							<img style="width: 60%;display: block;margin-left: auto;margin-right: auto;" src="assets/imgs/png/{{item.icon}}.png" alt="">
+						</div>
+						{{item.temperature}}&deg; F
+					</ion-card>
+				</ion-col>
+			</ion-scroll>
+		</div>
+
+	</ion-content>

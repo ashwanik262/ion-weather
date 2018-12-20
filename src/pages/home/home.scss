@@ -1,0 +1,102 @@
+page-home {
+
+	.toolbar-title-md {
+		font-size: 8vw !important;
+		background: #6495ed;
+		text-align: right;
+		text-transform: uppercase !important;
+		margin-top: 1%;
+		margin-left: 1%;
+	}
+
+	.hamburger {
+		font-size: 3rem !important;
+		color: white !important;
+	}
+
+	.scroll-item {
+		touch-action: pan-x !important;
+		margin-top: 1%;
+		width: 40vw;
+	}
+	
+	
+	ion-note{
+		color:white;
+		
+	}
+	.maingrid{
+
+		[col-6] {
+			height: 200px;
+		}
+	}
+
+	
+
+	[col-4] {
+		padding: 0px;
+	}
+
+	.five{
+		[col-5] {
+			text-align: right;
+		}
+	}
+
+	div.horizontal {
+		display: flex;
+		justify-content: center;
+	}
+
+	div.vertical {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	ion-refresher{
+		color:white;
+	}
+
+	ion-scroll[scrollX] {
+		white-space: nowrap;
+		height: 180px;
+		overflow: hidden;
+
+		.scroll-item {
+			display: inline-block;
+		}
+
+		.selectable-icon{
+			margin: 10px 20px 10px 20px;
+			color: red;
+			font-size: 100px;
+		}
+
+		ion-avatar img{
+			margin: 10px;
+		}
+	}
+
+	ion-scroll[scroll-avatar]{
+		height: 60px;
+	}
+
+  /* Hide ion-content scrollbar */
+  ::-webkit-scrollbar{
+  	display:none;
+  }
+  
+  .timecol{
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  }
+
+  .timeDiv{
+  	width: 100px;
+  	height: 100px;
+  }
+
+}

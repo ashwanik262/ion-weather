@@ -1,0 +1,63 @@
+
+html,body,h1,h2,h4,h5,h6,p,div,span,a {
+	font-family: 'muli-regular', sans-serif;
+	font-weight: normal !important;
+}
+
+h3 {
+	font-family: 'Antonio-regular', sans-serif;
+	font-weight: normal !important;
+}
+
+.home{
+	background: linear-gradient(to right, #283048, #859398);
+	color:color($colors,light) ;
+	// margin-top: 30px 2c3e50
+}
+
+.daily{
+	background: linear-gradient(to right, #283048, #859398);
+	color:color($colors,light) ;
+	// margin-top: 30px 2c3e50
+}
+
+.datePicker{
+	background: linear-gradient(to right, #283048, #859398);
+	color:color($colors,light) ;
+	// margin-top: 30px 2c3e50
+}
+
+.temp{
+	font-size: 65px;
+	text-align: center;;
+	font-weight: normal;
+}
+
+.location,.icon,.desc{
+	text-align: center;
+}
+
+.icon img{
+	width: 100px
+}
+
+.location{
+	font-size: 40px;
+}
+
+.desc{
+	font-size: 30px;
+}
+
+ion-app.md [padding] .scroll-content {
+	padding: 5px;
+}
+
+.segment-md .segment-button {
+	border: 1px solid #999;
+}
+
+ion-segment {
+
+	width: 50%;
+}

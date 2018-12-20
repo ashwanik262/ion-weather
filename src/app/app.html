@@ -1,0 +1,34 @@
+<ion-menu [content]="content">
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="setting()">Settings</button>
+    </ion-list>
+
+    <ion-list *ngIf="issetting">
+      <ion-row>
+        <ion-col style="text-align: left;vertical-align: middle;" col-6>
+          Temprature Unit
+        </ion-col>
+        <ion-col style="text-align: right" col-6>
+          <ion-segment style="position: absolute;right: 15px;" [(ngModel)]="tempUnit" (ionChange)="selectTemp(tempUnit)">
+          <ion-segment-button style="margin-right: 5px;border-radius: 5px;" value="celcius">
+            &deg;C
+          </ion-segment-button>
+          <ion-segment-button style="margin-right: 5px;border-radius: 5px;" value="Fahrenheit">
+            &deg;F
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  <ion-list *ngIf="!issetting">
+    <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      {{p.title}}
+    </button>
+  </ion-list>
+</ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
